@@ -1,0 +1,130 @@
+1. Who is the customer who spent the most on rental movies? Return his/her customer id, first
+name and the amount spent.
+   Ans:
+    create view amount_spent as
+ 
+    select customer_id,sum(amount) as total_amount
+ 
+    from payment
+ 
+    group by customer_id;
+ 
+ 
+
+    select a.customer_id, a.total_amount,c.first_name
+ 
+    from amount_spent a
+ 
+    join  customer c
+ 
+    on a.customer_id = c.customer_id
+ 
+    where a.total_amount = (select max(total_amount) from amount_spent);
+
+    RESULT:
+   customer_id	total_amount	first_name
+         526	   221.55	 KARL
+
+
+
+2. Give an interesting query of your own that is not already in the assignment. The query should
+
+involve at least two joins, HAVING clause and aggregation operation. Give the English explana-
+tion and the answer.
+
+  Ans:
+    	select l.name ,act.first_name 
+
+ 	FROM actor act
+	
+        inner join film_actor fa
+	
+        on fa.actor_id=act.actor_id
+	
+        inner join film f
+	
+        on f.film_id=fa.film_id
+	
+        inner join language l
+	
+        on l.language_id=f.language_id
+	
+        order by act.first_name ;
+
+
+    RESULT:
+
+     name	first_name
+    English	ADAM
+    English	ADAM
+    English	ADAM
+    English	ADAM
+    English	ADAM
+    English	ADAM
+    English	ADAM
+English	ADAM
+English	ADAM
+English	ADAM
+English	ADAM
+English	ADAM
+English	ADAM
+English	ADAM
+English	ADAM
+English	ADAM
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	AL
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALAN
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
+English	ALBERT
